@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  ubicoders_robotics101:
+    container_name: robotics101
+    image: ubicoders/courses:robotics101    
+    volumes:
+      - "/tmp/.X11-unix/:/tmp/.X11-unix/:rw"
+      - "$HOME/.Xauthority:/root/.Xauthority:rw"
+      - ./ubicoders:/home/ubicoders  # Mount the current directory to /workspace in the container
+    environment:
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1 
+    network_mode: host
+    tty: true
+    stdin_open: true
+
+
